@@ -1,0 +1,106 @@
+{% extends 'layout.html' %}
+{% block title %} Accueil {% endblock title %}
+
+{% load static %}
+{% block CardPlan %}
+<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+    <h6 class="m-0 font-weight-bold text-primary">Les autorisations</h6>
+    <div class="dropdown no-arrow">
+        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+            <div class="dropdown-header">Arrière plan:</div>
+            <a class="dropdown-item" href="#">Blanc</a>
+            <a class="dropdown-item" href="#" style="background-color:rgb(72, 155, 25)">Verte</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" style="background-color:black; color: white;">Noire</a>
+        </div>
+    </div>
+</div>
+{% endblock CardPlan %}
+{% block PlanHome %}
+<div class="content" style="margin-left: 5%;">
+
+    {%if alarme %}
+    <div id="demo" class="carousel slide" data-ride="carousel" data-interval="10000">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="col-xl-12 col-md-12 mb-4">
+                    <div class="card border-left-dark shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="h6 font-weight-bold text-uppercase mb-1" style="color: rgb(224, 11, 11);">
+                                        Mot de passe Incorrect</div>
+                                    <div class="mb-0 font-weight-bold text-gray">Le mot de passe saisie pour activer votre alarme n'a pas fonctionné, réessayer ou conctacter l'une de personne ci-bas pour une nouvelle mot de passe</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="far fa-bell-slash fa-3x" style="color: rgb(224, 11, 11);"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item" data-interval="49000">
+
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Nom User</th>
+                            <th>Categorie</th>
+                            <th>Numero Telephone</th>
+                            <th>Status lampes</th>
+                            <th>Status Alarme</th>
+
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Nom User</th>
+                            <th>Categorie</th>
+                            <th>Numero Téléphone</th>
+                            <th>Status lampes</th>
+                            <th>Status Alarme</th>
+
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        {% for autorisations in autorisations %}
+                        <tr>
+                            <td>{{autorisations.nom}}</td>
+                            <td>{{autorisations.categorie}}</td>
+                            <td>{{autorisations.numtel}}</td>
+                            <td>{% if autorisations.status %}
+                                Autorisé
+                                {% else %}
+                                Non-autorisé
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if autorisations.status_alarme %}
+                                Autorisé
+                                {% else %}
+                                Non-autorisé
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% empty %}
+                        Aucune donnee
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock PlanHome %}

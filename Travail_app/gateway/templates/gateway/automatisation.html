@@ -1,0 +1,153 @@
+{% extends 'layout.html' %}
+{% block title %} Accueil {% endblock title %}
+
+{% load static %}
+{% block CardPlan %}
+<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+    <h6 class="m-0 font-weight-bold text-primary">Automatisations des commandes</h6>
+    <div class="dropdown no-arrow">
+        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+            <div class="dropdown-header">Arrière plan:</div>
+            <a class="dropdown-item" href="#">Blanc</a>
+            <a class="dropdown-item" href="#" style="background-color:rgb(72, 155, 25)">Verte</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" style="background-color:black; color: white;">Noire</a>
+        </div>
+    </div>
+</div>
+
+
+{% endblock CardPlan %}
+{% block PlanHome %}
+<div class="content" style="margin-left: 5;">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Lampes</th>
+                            <th>Status</th>
+                            <th>Heure Allumage</th>
+                            <th>Heure extinction</th>
+                            <th>Validation</th>
+                            <th>consommation</th>
+
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Lampes</th>
+                            <th>Status</th>
+                            <th>Heure Allumage</th>
+                            <th>Heure extinction</th>
+                            <th>Validation</th>
+                            <th>consommation</th>
+
+                        </tr>
+                    </tfoot>
+                    <tbody>
+
+                        {% for automate in automate %}
+                        {% with forloop.counter as compt %}
+
+                        <tr>
+                            <form method="POST" action="{% url 'auto' %}" onSubmit="return validation({{ compt }})" id="form{{ compt }}">
+                                {% csrf_token %}
+                                <td>{{ automate.id_lampe }}</td>
+                                <td>
+                                    <select class="form-control" name="select" id="select{{ compt }}">
+                                        {% if automate.status %}
+                                        <option value="1"> Activé </option>
+                                        <option value="0">Eteindre</option>
+                                        {% else %}
+                                        <option value="0"> Eteindre</option>
+                                        <option value="1">Activé</option>
+                                        {% endif %}
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="time" id="temp{{ compt }}" value="12:00" class="form-control" name="temp1">
+                                </td>
+                                <td>
+                                    <input type="time" id="tempb{{ compt }}" value="12:00" class="form-control" name="temp2">
+                                </td>
+                                <td><button type="submit" id="bbn" class="btn " style="background-color: rgb(44, 173, 12); color: white" onclick="validation('{{ compt }}');">Validé</button></td>
+                                <td>
+                                    <span>
+                                        {% if automate.consomation_f %}
+                                        {{ automate.consomation_f}} Wh
+                                        {% else %}
+                                        0 Wh
+                                        {% endif %}
+                                    </span>
+                                    <span id="cons{{ compt }}" style="opacity: 0;">{% if automate.consomation %}
+                                        {{ automate.consomation}} Wh
+                                        {% endif %}</span>
+                                </td>
+
+                            </form>
+                        </tr>
+                        {% endwith %}
+                        {% empty %}
+                        Aucune donnee
+
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function validation(h) {
+        //
+        var k = document.createElement('input');
+        var ok1 = document.getElementById("cons" + h);
+        var cons = ok1.innerText;
+        cons = cons.replace("Wh", '');
+        k.name = 'consomation';
+        k.value = cons;
+        k.id = "consomation"
+        document.getElementById('form' + h).appendChild(k);
+        var x = document.getElementById('temp' + h).value;
+        var ok = document.getElementById('tempb' + h);
+        var y = ok.value;
+        x = x.split(':');
+        y = y.split(':');
+        var heure1 = parseFloat(x[0]);
+        var heure2 = parseFloat(y[0]);
+        var min1 = parseFloat(x[1]);
+        var min2 = parseFloat(y[1]);
+        var heure, min;
+        if (heure1 < heure2) {
+            if (min2 < min1) {
+                min2 = min2 + 60;
+                heure2 = heure1 - 1;
+            }
+            min = (min2 - min1) / 60;
+            heure = heure2 - heure1;
+            heure = heure + min;
+            ok.style.border = "";
+            //alert(heure);
+
+        } else if (heure1 == heure2) {
+            if (min2 < min1) {
+                ok.style.border = '2px solid red';
+                return false;
+            }
+            min = (min2 - min1) / 60;
+            ok.style.border = "";
+            // alert(min);
+
+        } else {
+            ok.style.border = "2px solid red";
+            return false;
+        }
+
+    }
+</script>
+{% endblock PlanHome %}

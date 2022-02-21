@@ -1,0 +1,265 @@
+{
+    "intents": [{
+            "tag": "greeting",
+            "patterns": [
+                "Hi",
+                "Hey",
+                "How are you",
+                "Is anyone there?",
+                "Hello",
+                "yo",
+                "whats up?",
+                "Good day"
+
+            ],
+            "responses": [
+                "Hey :-)",
+                "Hello, I hope you are having a good day",
+                "Hi there, what can I do for you?",
+                "Hi there, how can I help?"
+            ]
+        },
+        {
+            "tag": "salutation",
+            "patterns": [
+                "Bonjour",
+                "Hé!",
+                "Comment tu vas",
+                "Il y a quelqu’un ?",
+                "yo",
+                "Quoi de neuf ?",
+                "Bonne journée"
+            ],
+            "responses": [
+                "Hey :-)",
+                "Bonjour, j’espère que vous passez une bonne journée",
+                "Salut, que puis-je faire pour vous ?",
+                "Bonjour, comment puis-je vous aider ?"
+            ]
+        },
+
+
+        {
+            "tag": "goodbye",
+            "patterns": ["Bye", "See you later", "Goodbye"],
+            "responses": [
+                "See you later, thanks for visiting",
+                "Have a nice day",
+                "Bye! Come back again soon."
+            ]
+        },
+        {
+            "tag": "au revoir",
+            "patterns": ["ciao", "A plus tard", "Au revoir"],
+            "responses": [
+                "A plus tard, merci d'avoir discutter avec moi, je suis trop ravis",
+                "Passez une bonne journée",
+                "Au revoir ! Reviens vite."
+            ]
+        },
+
+
+        {
+            "tag": "thanks",
+            "patterns": ["Thanks", "Thank you", "That's helpful", "Thank's a lot!"],
+            "responses": ["Happy to help!", "Any time!", "My pleasure"]
+        },
+        {
+            "tag": "merci",
+            "patterns": ["Merci", "C’est utile", "Merci beaucoup!"],
+            "responses": ["Heureux d’aider!", "N’importe quand!", "Mon plaisir"]
+        },
+
+
+        {
+            "tag": "items",
+            "patterns": [
+                "Which items do you have?",
+                "What kinds of items are there?",
+                "What do you sell?", "what drinks do you sell?"
+            ],
+            "responses": [
+                "We sell coffee and tea",
+                "We have coffee and tea"
+            ]
+        },
+        {
+            "tag": "sport",
+            "patterns": [
+                "Vous jouez au football ?",
+                "vous fanatisez quelle equipe en europe?",
+                "vous aimez Barca?", "Vs aimez Real ca se voitm ou je me trompe?", "C'est quand la dernière fois que vous vous etes vraiment amusé?", "je ne comprend pas?"
+            ],
+            "responses": [
+                "J'aime pqs le sport, j'aime beaucoup plus coder",
+                "ca fqit un bail que je ne pense plus à cela."
+            ]
+        },
+
+
+        {
+            "tag": "seul",
+            "patterns": [
+                "Etes-vous seul dans la maison?",
+                "Puis-je vous suggerer un jeu?"
+
+            ],
+            "responses": [
+                "oui, oui",
+                "je sais que vous allez encore dire NARUTO"
+            ]
+        },
+
+
+        {
+            "tag": "rigolo",
+            "patterns": [
+                "Raconte-moi une blague !",
+                "Dis-moi quelque chose de drôle !",
+                "Tu connais une blague ?"
+            ],
+            "responses": [
+                "Monsieur et madame Eau ont une fille. Comment s’appelle-t-elle ?\n\nRose",
+                "Qu’est-ce qui n’est pas un steak ?\n\nUne pastèque"
+            ]
+        },
+        {
+            "tag": "geographie",
+            "patterns": [
+                "c'est quoi la geographie?",
+                "combien de planetes contient l'univers?",
+                "la terre est la quantieme plan(.*)?",
+                "le soleil tourne t-il autour de la terre?",
+                "qu'est ce la translation?",
+                "c'est quoi la rotation en geographie?",
+                "quelle est la plus grande planete?",
+                "que font les astronautes?",
+                "a quoi sert la fusee?",
+                "c'est quoi l'hydrographie?"
+            ],
+            "responses": [
+                "la geographie est une science qui etudie la description de la terre et ses phenomenes",
+                "l'univers contient dix(10) planetes",
+                "la terre est la troisieme plan(.*) par rapport du soleil",
+                "non le soleil ne tourne pas autour de la terre mas c'est la terre qui tourne autour du soleil",
+                "on parle de la translation lorsque la terre tourne autour d'elle meme",
+                "on parle de la rotation lorsque la terre tourne autour du soleil",
+                "la plus grande planete est jupiter",
+                "les astronautes ce sont des personnes qui volent dans l'espace extra-atmospherique",
+                "la fusee est un engin qui sert a propulser les astronautes dans l'espace",
+                "l'hydrographie est une science qui etudie les eaux"
+            ]
+        },
+        {
+            "tag": "musique",
+            "patterns": [
+                "quelle est votre star preferer",
+                "aimez vous ecouter quel type des chansons",
+                "avez vous deja ecoute la chanson mageste de W.Smouth?",
+                "as tu deja ecoute la chanson kitoko de Dadju?",
+                "quel genre de musique adorez vous?",
+                " pour vous c'est quoi la musique?",
+                "quelle est lq chanson de youssoufa que tu preferes?"
+            ],
+            "responses": [
+                "ma star prefere est ferre gola",
+                "j'aime ecouter des chansons francaises",
+                "pas encore je n'ai jamais ecoute derniere mais j'ai deja ecoute deep in love de W.Smouth",
+                "il est certes  je l'ai deja ecoute mais je ne l'avais pas beaucoup adore comme telle| non je n'ai jamais entendu parle de lui",
+                "j'adore le rap le hip pop mais je kiff trop le slow et le blues un peu de jazz aussi",
+                "pour moi la musique bien d'etre un art de combinaison de son la musique est un etre de bienveillance car elle me soulage esprit",
+                "La chanson mon roi  de Youssoufa est ma (famous|celebre) (song| musique)"
+            ]
+
+        },
+        {
+            "tag": "moi",
+            "patterns": [
+                "qui es tu?",
+                "as tu deja un nom?",
+                "alors comment pourrais je vous appele maintenant?",
+                "ainsi donc LINUX99 qu'as tu du nouveau pour nous?",
+                "pouvez vous nous allumez la lampe de la cuisine?",
+                "linux99 j'aimerai que la lampe de ma chambre puisse s'eteindre apres cinq minutes",
+                "a chaque fois qu'il y a une alerte pouvez vous veiller a ce que toutes les lampes restent allumees?",
+                "as tu deja lu un livre?"
+            ],
+            "responses": [
+                "je suis une intellegence artificielle qui raison tout comme toi",
+                "pas encore mon maitre ne m'a encore pas donne un nom",
+                "mon concepteur aimerait m'appeller LINUX99",
+                "moi je suis la a votre service vous n'avez qu'a dire ce que je dois faire",
+                "sans probleme la lampe est deja allume",
+                "je veillerai qu'elle puisse s'eteindre dans le cinq minutes qui suivent",
+                "biensur si vous me le demandez je peux le faire",
+                "biensur que non ca serait un plaisir que puisse apprendre"
+            ]
+        },
+        {
+            "tag": "histoire",
+            "patterns": [
+                "c'est quoi l'histoire?",
+                "quel est le but de l'histoire?",
+                "quel est le premier president de la Republique democratique du Congo?",
+                "quel est l'actuel president de la RDC?",
+                "quelle est le pays metropole de la RDC?",
+                "ce fut dans quelle conference que fut le partager de l'afrique?"
+            ],
+            "responses": [
+                "l'histoire est une science qui etudie le passe pour mieux reparer l'avenir",
+                "le but de l'histoire est de connaitre le passe pour mieux le present et preparer l'avenir",
+                "le premier president de la Republique democratique du congo fut Joseph Kasavubu",
+                "l'actuel  de la RDC s'appelle Antoine Felix Tshisekedi Kilombo",
+                "le pays metropole de la RDC est la Belgique",
+                "le partage de l"
+            ]
+        },
+        {
+            "tag": "commerce",
+            "patterns": [
+                "c'est quoi le commerce?",
+                "quel est  le but du commerce?",
+                "combien de type de commerce existe il?",
+                "quelle est la formule analytique pour calculer le resultat d'une entreprise?",
+                "a quoi consiste la gestion financiere?"
+            ],
+            "responses": [
+                "le commerce est une operatiuon d'achat et de vendre de biens et services dqns un but lucratif",
+                "le but du com(.*) est l'obtention du benefice",
+                "il existe deux type de commerce le commerce interieur et le commerce exterieur",
+                "la form(.*) pour calculer le resultat analytique d'une entreprise est les produits d'exploitation moins les charges d'exploitations",
+                "la gestion financiere consiste q mettre en place des actions pour se procurer les ressources  et optimiser leur utilisation"
+            ]
+        },
+        {
+            "tag": "sante",
+            "patterns": [
+                "Comment sentez-vous?",
+                "(.*) covid(.*)",
+                "tu as quoi comment difficulte",
+                "tu as deja vu votre medecin?",
+                "tu penses que c'est grave?"
+            ],
+            "responses": [
+                "j'ai du mal a respirer",
+                "je dois voir mon medecin",
+                "je vais dormir seulement",
+                "je vais prendre de l'aspirine"
+            ]
+
+        },
+
+        {
+            "tag": "animaux",
+            "patterns": [
+                "Quel genre d’animal avez-vous ?",
+                "Quel genre d’animal de compagnie aimez-vous",
+                "Avez-vous des animaux ?", " aimez-vous les chiens ou les chats ?"
+            ],
+            "responses": [
+                "J’ai 3 chiens robots",
+                "J’aime garder les insectes comme animaux de compagnie !"
+            ]
+        }
+    ]
+}

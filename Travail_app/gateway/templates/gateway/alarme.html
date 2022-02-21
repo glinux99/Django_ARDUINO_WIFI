@@ -1,0 +1,122 @@
+{% extends 'layout.html' %}
+{% block title %} Accueil {% endblock title %}
+
+{% load static %}
+{% block CardPlan %}
+<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+    <h6 class="m-0 font-weight-bold text-primary">Alarme Actvation</h6>
+    <div class="dropdown no-arrow">
+        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+            <div class="dropdown-header">Arrière plan:</div>
+            <a class="dropdown-item" href="#">Blanc</a>
+            <a class="dropdown-item" href="#" style="background-color:rgb(72, 155, 25)">Verte</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" style="background-color:black; color: white;">Noire</a>
+        </div>
+    </div>
+</div>
+{% endblock CardPlan %}
+{% block PlanHome %}
+<div class="content" style="margin-left: 5%;">
+    <figure>
+        <blockquote class="blockquote">
+            <p>L'activation de votre alarme a reussi. Vous Sentez-vous en danger? On a integrer dans notre modele un nombre des conctacts de personnes à appeler si vous vous sentez en danger.(tableau en bas)</p>
+        </blockquote>
+        <figcaption class="blockquote-footer" style="color: red;">
+            L'Intelligence Artificielle <cite title="Developpé par Daniel KIKIMBA">ERICA</cite> est en mode SECURE
+        </figcaption>
+    </figure>
+    <form action="{% url 'security' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn" style="background:rgb(247, 211, 10) ; color: white; float: right; margin-right: 2%; margin-bottom: 10px;">Désactivation</button>
+    </form>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Status</th>
+                        <th>temps moyen</th>
+                        <th>Numero</th>
+
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Status</th>
+                        <th>temps moyen</th>
+                        <th>Numero</th>
+
+                    </tr>
+
+                </tfoot>
+                <tbody>
+
+                    <tr>
+                        <td> Sama Lukonde</td>
+                        <td>Chef de Securite Goma</td>
+                        <td> 12min </td>
+                        <td> +243970912428 </td>
+
+                    </tr>
+
+                    <tr>
+                        <td> Esther Lybien</td>
+                        <td> Major</td>
+                        <td> 22min </td>
+                        <td> +243970915685 </td>
+
+                    </tr>
+                    <tr>
+                        <td> Richard Kamanda</td>
+                        <td> Chef de Quartier</td>
+                        <td> 5min </td>
+                        <td> +243979564832 </td>
+
+                    </tr>
+
+                    <td> Bintou Keita</td>
+                    <td> Monusco</td>
+                    <td> 34min </td>
+                    <td> +243895794894 </td>
+
+                    </tr>
+
+                    <td> Col. Job</td>
+                    <td> Secu Etat Siege</td>
+                    <td> 25min </td>
+                    <td> +243894583890 </td>
+
+                    </tr>
+
+                    <td> Janvier Jules</td>
+                    <td> ANR</td>
+                    <td> 5min </td>
+                    <td> +243894568934 </td>
+
+                    </tr>
+
+                    <td> Michel Ngovi</td>
+                    <td> Police PNC</td>
+                    <td> 9min </td>
+                    <td> +243975678934 </td>
+
+                    </tr>
+
+                    <td> Christian RFR</td>
+                    <td> Maire de la Ville</td>
+                    <td> 34min </td>
+                    <td> +243979537895 </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock PlanHome %}

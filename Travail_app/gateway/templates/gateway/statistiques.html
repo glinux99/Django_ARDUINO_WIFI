@@ -1,0 +1,104 @@
+{% extends 'layout.html' %}
+{% block title %} Accueil {% endblock title %}
+
+{% load static %}
+{% block CardPlan %}
+<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+    <h6 class="m-0 font-weight-bold text-primary">Statistiques Générales</h6>
+    <div class="dropdown no-arrow">
+        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+            <div class="dropdown-header">Arrière plan:</div>
+            <a class="dropdown-item" href="#" onclick="verte_click('blanc');">Blanc</a>
+            <a class="dropdown-item" href="#" style="background-color:rgb(72, 155, 25);" onclick="verte_click('verte');">Verte</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" onclick="verte_click('noire');" style="background-color:black; color: white;">Noire</a>
+        </div>
+    </div>
+</div>
+{% endblock CardPlan %}
+
+
+{% block PlanHome %}
+<div class="content" style="margin-left: 5%;" id="verte_click">
+    <html>
+
+    <style>
+        .container {
+            width: 70%;
+            margin: 15px auto;
+        }
+
+        body {
+            text-align: center;
+            color: green;
+        }
+
+        h2 {
+            text-align: center;
+            font-family: "Verdana", sans-serif;
+            font-size: 30px;
+        }
+    </style>
+
+
+
+    <div id="container" style="width: 75%;">
+        <canvas id="pie-chart"></canvas>
+    </div>
+    <div>
+        <p id="pp" style="color: white;">{{cons}}</p>
+    </div>
+
+    <script>
+        var x_valeur = document.getElementById('pp').innerText;
+        var y_valeur = ["Chambre de Daniel", "Toilette 1", "Chambre Esther", "Toilette P", "Cuisine", "Salle à manger", "Chambre Parent", "Salon", "Prise S"];
+        x_valeur = x_valeur.replace('[', "");
+        x_valeur = x_valeur.replace(']', "");
+        let x = x_valeur.split(',');
+        x_valeur = x;
+        var barcolors = ["red", "green", "blue", "orange", "brown", "blue", "orange", "brown", "red"];
+        var config = {
+            type: "bar",
+            data: {
+                labels: y_valeur,
+                datasets: [{
+                    fill: false,
+                    lineTension: 0,
+                    borderColor: "green",
+                    backgroundColor: barcolors,
+                    data: x_valeur
+                }]
+            },
+
+
+
+            options: {
+                legend: {
+                    display: false
+                },
+
+                title: {
+                    display: true,
+                    text: "Statistique Général de la consommation des lampes",
+                    fontSize: 16,
+                    fontColor: "red"
+                }
+            }
+        };
+
+        window.onload = function() {
+            var ctx = document.getElementById('pie-chart').getContext('2d');
+            new Chart(ctx, config);
+
+        };
+    </script>
+
+
+
+
+</div>
+<script src="{% static 'chart.js/Chart.js' %"></script>
+{% endblock PlanHome %}

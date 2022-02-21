@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Smart Home Connection</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .content {
+        transition: all .7s ease;
+    }
+
+    .content:hover {
+        transform: scale(1.1);
+    }
+
+    body {
+        background-color: rgb(15, 20, 14);
+    }
+
+    .background-img {
+        height: 500px;
+        width: 1000px;
+        margin: 3% auto;
+        border: 1px solid #0b310a;
+        border-radius: 4px;
+        box-shadow: 0px 0px 5px #070707;
+        position: relative;
+
+        background-color: #1f4120;
+        background-image: linear-gradient(335deg, rgb(0, 0, 0) 23px, transparent 23px),
+            linear-gradient(155deg, black 23px, transparent 23px),
+            linear-gradient(335deg, black 23px, transparent 23px),
+            linear-gradient(155deg, black 23px, transparent 23px);
+        background-size: 57px 57px;
+        background-position: 0px 2px, 4px 35px, 29px 31px, 34px 6px;
+
+
+    }
+
+    .content h2 {
+        font-size: 19px;
+    }
+
+    .box {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 400px;
+        height: 400px;
+        background: #051a0da6;
+        box-sizing: border-box;
+        overflow: hidden;
+        box-shadow: 0 20px 50px rgb(52, 55, 71);
+        border: 2px solid #08330a;
+        color: white;
+        padding: 20px;
+    }
+
+    .box:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.1);
+        transition: 0.5s;
+        pointer-events: none;
+    }
+
+    .box:hover:before {
+        left: -50%;
+        transform: skewX(-5deg);
+
+    }
+
+
+    .box .content {
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        border: 1px solid #f2f3f8;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 5px 10px rgba(9, 0, 0, 0.5);
+
+    }
+
+    .box span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: block;
+        box-sizing: border-box;
+
+    }
+
+    .box span:nth-child(1) {
+        transform: rotate(0deg);
+    }
+
+    .box span:nth-child(2) {
+        transform: rotate(90deg);
+    }
+
+    .box span:nth-child(3) {
+        transform: rotate(180deg);
+    }
+
+    .box span:nth-child(4) {
+        transform: rotate(270deg);
+    }
+
+    .box span:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background: #1aeb07;
+        animation: animate 4s linear infinite;
+    }
+
+    @keyframes animate {
+        0% {
+            transform: scaleX(0);
+            transform-origin: right;
+            background-color: rgb(31, 53, 10);
+        }
+
+        50% {
+            transform: scaleX(1);
+            transform-origin: right;
+            background-color: rgb(72, 129, 15);
+        }
+
+        50.1% {
+            transform: scaleX(1);
+            transform-origin: left;
+            background-color: hotpink;
+            background-color: rgb(78, 145, 12);
+
+        }
+
+        100% {
+            transform: scaleX(0);
+            transform-origin: left;
+            background-color: lawngreen;
+
+        }
+    }
+
+    input,
+    button {
+        margin-top: 20px;
+    }
+
+    .blink {
+        height: 30px;
+        margin-top: 30px;
+        border-radius: 5px 5px 5px 5px;
+        animation: blin 2s forwards, blin 2s 3s infinite;
+    }
+
+    @keyframes blin {
+        0% {
+            opacity: 0.1;
+            background-color: rgba(26, 114, 52, 0.836);
+        }
+
+        10% {
+            opacity: .2;
+            background-color: rgb(35, 88, 11);
+        }
+
+        20% {
+            opacity: .3;
+            background-color: rgb(35, 88, 11);
+        }
+
+        30% {
+            opacity: .4;
+            background-color: rgb(35, 88, 11);
+        }
+
+        40% {
+            opacity: .5;
+            background-color: rgb(35, 88, 11);
+        }
+
+        50% {
+            opacity: .6;
+            background-color: rgb(35, 88, 11);
+        }
+
+        0% {
+            opacity: 0.1;
+            background-color: rgba(26, 114, 52, 0.836);
+        }
+
+        100% {
+            opacity: .2;
+            background-color: rgb(35, 88, 11);
+        }
+
+        90% {
+            opacity: .3;
+            background-color: rgb(35, 88, 11);
+        }
+
+        80% {
+            opacity: .4;
+            background-color: rgb(35, 88, 11);
+        }
+
+        70% {
+            opacity: .5;
+            background-color: rgb(35, 88, 11);
+        }
+
+        60% {
+            opacity: .6;
+            background-color: rgb(35, 88, 11);
+        }
+    }
+</style>
+
+<body>
+    <section>
+        <div class="container">
+            <div class="background-img">
+                <div class="box">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <div class="content">
+                        <h2>
+                            <div class="blink"> Smart House Gate</div>
+                        </h2>
+                        <p><br><input type="text" placeholder="username">
+                            <input type="password" placeholder="***********">
+                            <button type="submit">Connection</button>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+</body>
+
+</html>

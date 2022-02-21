@@ -1,0 +1,5 @@
+[client]
+database = "travail_db"
+user = "root"
+password = "linux99"
+default-character-set = utf8

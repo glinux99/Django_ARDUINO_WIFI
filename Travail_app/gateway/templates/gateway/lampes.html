@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+{% block title %} Accueil {% endblock title %}
+
+{% load static %}
+{% block CardPlan %}
+<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+    <h6 class="m-0 font-weight-bold text-primary">Details sur la consommation</h6>
+    <div class="dropdown no-arrow">
+        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+            <div class="dropdown-header">Arrière plan:</div>
+            <a class="dropdown-item" href="#">Blanc</a>
+            <a class="dropdown-item" href="#" style="background-color:rgb(72, 155, 25)">Verte</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" style="background-color:black; color: white;">Noire</a>
+        </div>
+    </div>
+</div>
+{% endblock CardPlan %}
+{% block PlanHome %}
+<div class="content" style="margin-left: 5%;">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>ID Lampe</th>
+                            <th>Status</th>
+                            <th>Datte d'allumage</th>
+                            <th>Date de d'extinction</th>
+                            <th>Activation User</th>
+
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>ID Lampe</th>
+                            <th>Status</th>
+                            <th>Datte d'allumage</th>
+                            <th>Date de d'extinction</th>
+                            <th>Activation User</th>
+
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        {% for lampe in lampe %}
+                        <tr>
+                            <td>{{lampe.id_lampe}}</td>
+                            <td>
+                                {% if lampe.status%}
+                                Alumée
+                                {% else %}
+                                Eteinte
+                                {% endif %}
+                            </td>
+                            <td>{{lampe.date_alum}}</td>
+                            <td>{{lampe.date_ext}}</td>
+                            <td>{{lampe.nom_humain}}</td>
+                        </tr>
+                        {% empty %}
+                        Aucune donnee
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock PlanHome %}
